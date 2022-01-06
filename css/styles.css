@@ -29,3 +29,7 @@ input {
 input:hover {
   transform: scale(1.2);
 }
+
+.footer {
+  margin-top: 100px;
+}
