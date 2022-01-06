@@ -5,13 +5,28 @@
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="css/styles.css" />
     <script src="scripts/rockpaperscissors.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div id="container">
-      <button id="rock">Rock!!</button>
-      <button id="paper">Paper!!</button>
-      <button id="scissors">Scissors!!</button>
-      <div class="scoreboard"></div>
+    <div class="hero">
+      <h1>Rock paper scissors</h1>
     </div>
+    <div id="container">
+      <input type="image" id="rock" alt="Rock" src="/images/rock.png" />
+      <input type="image" id="paper" alt="Paper" src="/images/paper.png" />
+      <input
+        type="image"
+        id="scissors"
+        alt="Scissors"
+        src="/images/scissors.png"
+      />
+    </div>
+    <div class="round"></div>
+    <div class="scoreboard"></div>
   </body>
 </html>

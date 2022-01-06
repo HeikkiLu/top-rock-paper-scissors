@@ -7,12 +7,30 @@ function computerPlay() {
 }
 
 function play() {
-  const buttons = document.querySelectorAll("button");
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      game(button.id);
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.addEventListener("click", () => {
+      game(input.id);
     });
   });
+}
+
+function checkScore() {
+  const scoreboard = document.querySelector(".scoreboard");
+  const round = document.querySelector(".round");
+  if (playerScore === 5 && computerScore < 5) {
+    scoreboard.textContent = `YOU WON!!🎉🎉 Your score: ${playerScore.toString()} Computer score: ${computerScore.toString()}`;
+    round.textContent = "";
+    playerScore = 0;
+    computerScore = 0;
+  } else if (playerScore < 5 && computerScore === 5) {
+    scoreboard.textContent = `Computerino won :( Your score: ${playerScore.toString()} Computer score: ${computerScore.toString()}`;
+    playerScore = 0;
+    computerScore = 0;
+    round.textContent = "";
+  } else {
+    setScore();
+  }
 }
 
 function setScore() {
@@ -23,8 +41,6 @@ function setScore() {
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   computerSelection = computerSelection.toLowerCase();
-
-  //console.log(`Player: ${playerSelection}\nComputer: ${computerSelection}`);
 
   if (playerSelection === computerSelection) {
     return 3;
@@ -57,16 +73,20 @@ function playRound(playerSelection, computerSelection) {
 
 function game(playerSelection) {
   const computerSelection = computerPlay();
-
+  const round = document.querySelector(".round");
   if (playerSelection != null) {
     let result = playRound(playerSelection, computerSelection);
     if (result === 1) {
       playerScore++;
+      round.textContent = "You win the round!";
     } else if (result === 0) {
       computerScore++;
+      round.textContent = "Computer wins the round!";
+    } else {
+      round.textContent = "Draw!";
     }
   }
-  setScore();
+  checkScore();
 }
 
 play();
